@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito | LUXE</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="announcement-bar">
+            <p>Envío gratuito en pedidos superiores a $200 | Devoluciones gratuitas durante 30 días</p>
+        </div>
+        <div class="container header-container">
+            <div class="logo">LUXE</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="products.html">Colección</a></li>
+                    <li><a href="women.html">Mujer</a></li>
+                    <li><a href="men.html">Hombre</a></li>
+                    <li><a href="accessories.html">Accesorios</a></li>
+                    <li><a href="about.html">Nosotros</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <a href="#" class="icon-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </a>
+                <a href="#" class="icon-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </a>
+                <a href="cart.html" class="icon-link cart-icon active">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
+            </div>
+            <button class="mobile-menu-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Title -->
+    <section class="page-title">
+        <div class="container">
+            <h1>Tu Carrito</h1>
+            <div class="breadcrumbs">
+                <a href="index.html">Inicio</a> / <span>Carrito</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Section -->
+    <section class="cart-section">
+        <div class="container">
+            <div class="cart-container">
+                <div class="cart-header">
+                    <div class="cart-header-item product">Producto</div>
+                    <div class="cart-header-item price">Precio</div>
+                    <div class="cart-header-item quantity">Cantidad</div>
+                    <div class="cart-header-item subtotal">Subtotal</div>
+                    <div class="cart-header-item remove"></div>
+                </div>
+                
+                <div id="cart-items" class="cart-items">
+                    <!-- Los items del carrito se generarán dinámicamente con JavaScript -->
+                </div>
+                
+                <div class="cart-actions">
+                    <button id="clear-cart" class="btn btn-outline">Vaciar Carrito</button>
+                    <a href="products.html" class="btn btn-outline">Continuar Comprando</a>
+                </div>
+                
+                <div class="cart-summary">
+                    <h2>Resumen del Pedido</h2>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="cart-subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Impuestos (10%)</span>
+                        <span id="cart-tax">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Envío</span>
+                        <span id="cart-shipping">$0.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="cart-total">$0.00</span>
+                    </div>
+                    <button class="btn btn-primary checkout-btn">Finalizar Compra</button>
+                    <div class="payment-options">
+                        <p>Aceptamos:</p>
+                        <div class="payment-icons">
+                            <img src="https://cdn.pixabay.com/photo/2021/12/06/13/48/visa-6850402_1280.png" alt="Visa" height="30">
+                            <img src="https://cdn.pixabay.com/photo/2021/12/06/13/48/mastercard-6850401_1280.png" alt="Mastercard" height="30">
+                            <img src="https://cdn.pixabay.com/photo/2021/12/06/13/48/paypal-6850403_1280.png" alt="PayPal" height="30">
+                            <img src="https://cdn.pixabay.com/photo/2021/12/06/13/48/american-express-6850404_1280.png" alt="American Express" height="30">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notificación -->
+    <div class="notification" id="notification"></div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>LUXE</h3>
+                    <p>Moda de lujo atemporal, diseñada para perdurar y creada con los mejores materiales sostenibles.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Compras</h3>
+                    <ul class="footer-links">
+                        <li><a href="women.html">Mujer</a></li>
+                        <li><a href="men.html">Hombre</a></li>
+                        <li><a href="accessories.html">Accesorios</a></li>
+                        <li><a href="products.html">Colecciones</a></li>
+                        <li><a href="products.html">Novedades</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Información</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">Sobre Nosotros</a></li>
+                        <li><a href="#">Sostenibilidad</a></li>
+                        <li><a href="#">Tiendas</a></li>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Servicio al Cliente</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#">Envíos y Entregas</a></li>
+                        <li><a href="#">Devoluciones</a></li>
+                        <li><a href="#">Preguntas Frecuentes</a></li>
+                        <li><a href="#">Guía de Tallas</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="payment-methods">
+                    <span>Métodos de pago:</span>
+                    <img src="https://cdn.pixabay.com/photo/2021/12/06/13/48/visa-6850402_1280.png" alt="Visa" height="30">
+                    <img src="https://cdn.pixabay.com/photo/2021/12/06/13/48/mastercard-6850401_1280.png" alt="Mastercard" height="30">
+                    <img src="https://cdn.pixabay.com/photo/2021/12/06/13/48/paypal-6850403_1280.png" alt="PayPal" height="30">
+                    <img src="https://cdn.pixabay.com/photo/2021/12/06/13/48/american-express-6850404_1280.png" alt="American Express" height="30">
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2025 LUXE. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="cart.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
