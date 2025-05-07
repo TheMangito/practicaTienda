@@ -240,6 +240,29 @@ document.addEventListener('DOMContentLoaded', function() {
                     showNotification('Carrito vaciado');
                 }
             });
+
+            // 1) Crea el botón de PayPal
+            paypal.Buttons({
+                createOrder: (data, actions) => {
+                    // usa tu función interna que devuelve el total del carrito
+                    const total2 = getCartTotal(); 
+                    return actions.order.create({
+                        purchase_units: [{ amount: { value: total2.toFixed(2) } }]
+                    });
+                },
+                onApprove: (data, actions) => {
+                    return actions.order.capture().then(details => {
+                        showMessage('¡Gracias por su compra!', 'success');
+                    });
+                },
+                onCancel: () => {
+                    showMessage('Pago cancelado.', 'error');
+                },
+                onError: err => {
+                    console.error(err);
+                    showMessage('Hubo un error al procesar el pago.', 'error');
+                }
+            }).render('#paypal-button-container');
         }
     }
     
@@ -263,35 +286,8 @@ function getCartTotal() {
     return parseFloat(txt);
  }
 
-// Al final de cart.js, tras toda la lógica de carrito…
-document.addEventListener('DOMContentLoaded', function() {
-    // 1) Crea el botón de PayPal
-    paypal.Buttons({
-        createOrder: (data, actions) => {
-            // usa tu función interna que devuelve el total del carrito
-            const total2 = getCartTotal(); 
-            return actions.order.create({
-                purchase_units: [{ amount: { value: total2.toFixed(2) } }]
-            });
-        },
-        onApprove: (data, actions) => {
-            return actions.order.capture().then(details => {
-                showMessage('¡Gracias por su compra!', 'success');
-            });
-        },
-        onCancel: () => {
-            showMessage('Pago cancelado.', 'error');
-        },
-        onError: err => {
-            console.error(err);
-            showMessage('Hubo un error al procesar el pago.', 'error');
-        }
-    }).render('#paypal-button-container');
-});
-
 // Función auxiliar para mostrar mensajes en el div#message
 function showMessage(text, type) {
     const msg = document.getElementById('message');
     msg.innerHTML = `<span class="${type}">${text}</span>`;
 }
-    
