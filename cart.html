@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito de Compras | LUXE</title>
+    <title>Carrito | LUXE</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap">
     <link rel="stylesheet" href="styles2.css">
 </head>
@@ -56,11 +56,13 @@
     <!-- Cart Section -->
     <section class="cart-section">
         <div class="container">
-            <div id="cart-container" class="cart-container">
-                <!-- El contenido del carrito se cargará dinámicamente con JavaScript -->
-                <div id="empty-cart" class="empty-cart" style="display: none;">
-                    <p>Tu carrito está vacío</p>
-                    <a href="products.html" class="btn btn-dark">Continuar Comprando</a>
+            <div class="cart-container">
+                <div class="cart-header">
+                    <div class="cart-header-item product">Producto</div>
+                    <div class="cart-header-item price">Precio</div>
+                    <div class="cart-header-item quantity">Cantidad</div>
+                    <div class="cart-header-item subtotal">Subtotal</div>
+                    <div class="cart-header-item remove"></div>
                 </div>
                 
                 <div id="cart-items" class="cart-items">
@@ -90,12 +92,16 @@
                         <span>Total</span>
                         <span id="cart-total">$0.00</span>
                     </div>
-                    <!-- dentro de .cart-summary -->
-<button class="btn btn-primary checkout-btn">Finalizar Compra</button>
+                    <!-- Contenedor del botón de PayPal -->
+                    <div id="paypal-button-container"></div>
 
-<!-- justo después, contenedor donde PayPal inyectará los botones -->
-<div id="paypal-button-container"></div>
-<div class="payment-options"></div>
+                    <!-- Contenedor para mostrar mensajes al usuario -->
+                    <div id="message"></div>
+
+                    <!-- Notificación -->
+                    <div class="notification" id="notification"></div>  
+                    
+                    <div class="payment-options">
                         <p>Aceptamos:</p>
                         <div class="payment-icons">
                             <img src="https://cdn.pixabay.com/photo/2021/12/06/13/48/visa-6850402_1280.png" alt="Visa" height="80" width="100"> <br>
@@ -109,69 +115,7 @@
         </div>
     </section>
 
-    <!-- Productos Recomendados -->
-    <section class="recommended-products">
-        <div class="container">
-            <h2 class="section-title">También te puede interesar</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1551489186-cf8726f514f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Vestido Midi">
-                        <div class="product-actions">
-                            <button class="quick-view">Vista Rápida</button>
-                            <button class="add-to-cart">Añadir al Carrito</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Vestido Midi</h3>
-                        <div class="product-price">$279.00</div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1491336477066-31156b5e4f35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Camisa de Lino">
-                        <div class="product-actions">
-                            <button class="quick-view">Vista Rápida</button>
-                            <button class="add-to-cart">Añadir al Carrito</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Camisa de Lino</h3>
-                        <div class="product-price">$189.00</div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Bolso de Cuero">
-                        <div class="product-actions">
-                            <button class="quick-view">Vista Rápida</button>
-                            <button class="add-to-cart">Añadir al Carrito</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Bolso de Cuero</h3>
-                        <div class="product-price">$399.00</div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Gafas de Sol">
-                        <div class="product-actions">
-                            <button class="quick-view">Vista Rápida</button>
-                            <button class="add-to-cart">Añadir al Carrito</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Gafas de Sol</h3>
-                        <div class="product-price">$179.00</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Notificación -->
-    <div class="notification" id="notification"></div>
+    
 
     <!-- Footer -->
     <footer>
@@ -229,7 +173,11 @@
             <div class="footer-bottom">
                 <div class="payment-methods">
                     <span>Métodos de pago:</span>
-                    </div>
+                    <img src="https://cdn.pixabay.com/photo/2021/12/06/13/48/visa-6850402_1280.png" alt="Visa" height="30">
+                    <img src="https://cdn.pixabay.com/photo/2021/12/06/13/48/mastercard-6850401_1280.png" alt="Mastercard" height="30">
+                    <img src="https://cdn.pixabay.com/photo/2021/12/06/13/48/paypal-6850403_1280.png" alt="PayPal" height="30">
+                    <img src="https://cdn.pixabay.com/photo/2021/12/06/13/48/american-express-6850404_1280.png" alt="American Express" height="30">
+                </div>
                 <div class="copyright">
                     <p>&copy; 2025 LUXE. Todos los derechos reservados.</p>
                 </div>
@@ -237,6 +185,7 @@
         </div>
     </footer>
 
+    <script src="https://www.paypal.com/sdk/js?client-id=AeJLi1LxbTGdb-a7f-qYKoJBkiastSyxV58x-7Mu33TljP2tdf7sKDEFpG0nDfIXXNecEsKYktZ_bEIn&currency=MXN"></script>
     <script src="cart.js"></script>
     <script src="main.js"></script>
 </body>
