@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // expón total leyendo el DOM
 function getCartTotal() {
     const txt = document.getElementById('cart-total').textContent.replace(/[^0-9.]+/g, '');
-    return parseFloat(txt).toFixed(2);
+    return parseFloat(txt);
  }
 
 // Al final de cart.js, tras toda la lógica de carrito…
