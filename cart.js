@@ -257,15 +257,21 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// expón total leyendo el DOM
+function getCartTotal() {
+    const txt = document.getElementById('cart-total').textContent.replace(/[^0-9.]+/g, '');
+    return parseFloat(txt).toFixed(2);
+ }
+
 // Al final de cart.js, tras toda la lógica de carrito…
 document.addEventListener('DOMContentLoaded', function() {
     // 1) Crea el botón de PayPal
     paypal.Buttons({
         createOrder: (data, actions) => {
             // usa tu función interna que devuelve el total del carrito
-            const total = getCartTotal(); 
+            const total2 = getCartTotal(); 
             return actions.order.create({
-                purchase_units: [{ amount: { value: total.toFixed(2) } }]
+                purchase_units: [{ amount: { value: total2.toFixed(2) } }]
             });
         },
         onApprove: (data, actions) => {
