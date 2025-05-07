@@ -90,8 +90,12 @@
                         <span>Total</span>
                         <span id="cart-total">$0.00</span>
                     </div>
-                    <button class="btn btn-primary checkout-btn">Finalizar Compra</button>
-                    <div class="payment-options">
+                    <!-- dentro de .cart-summary -->
+<button class="btn btn-primary checkout-btn">Finalizar Compra</button>
+
+<!-- justo después, contenedor donde PayPal inyectará los botones -->
+<div id="paypal-button-container"></div>
+<div class="payment-options"></div>
                         <p>Aceptamos:</p>
                         <div class="payment-icons">
                             <img src="https://cdn.pixabay.com/photo/2021/12/06/13/48/visa-6850402_1280.png" alt="Visa" height="80" width="100"> <br>

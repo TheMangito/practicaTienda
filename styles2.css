@@ -1761,4 +1761,16 @@ footer {
     .team-grid {
         grid-template-columns: 1fr;
     }
+    /* 1. Oculta todo el bloque de opciones de pago */
+.payment-options,
+#paypal-button-container {
+  display: none;               /* no se ven inicialmente */
+}
+
+/* 2. Cuando tengan la clase .visible, se muestran */
+.payment-options.visible,
+#paypal-button-container.visible {
+  display: block;              /* o flex/grid según tu diseño */
+}
+
 }

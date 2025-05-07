@@ -246,29 +246,42 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
 
-            // 1) Crea el botón de PayPal
-            paypal.Buttons({
-                createOrder: (data, actions) => {
-                    // usa tu función interna que devuelve el total del carrito
-                    const total2 = getCartTotal(); 
+            const checkoutBtn = document.querySelector('.checkout-btn');
+            const paymentOptions = document.querySelector('.payment-options');
+            const paypalContainer = document.getElementById('paypal-button-container');
+          
+            let paypalRendered = false;  // para que renderice PayPal solo una vez
+          
+            checkoutBtn.addEventListener('click', () => {
+              // 1) toggle visibilidad de opciones de pago
+              paymentOptions.classList.toggle('visible');    // MDN: classList.toggle :contentReference[oaicite:4]{index=4}
+              paypalContainer.classList.toggle('visible');
+          
+              // 2) si aún no hemos renderizado PayPal, lo inicializamos
+              if (!paypalRendered) {
+                paypal.Buttons({
+                  createOrder: (data, actions) => {
+                    const total = getCartTotal();          // tu función de total existente
                     return actions.order.create({
-                        purchase_units: [{ amount: { value: total2.toFixed(2) } }]
+                      purchase_units: [{ amount: { value: total.toFixed(2) } }]
                     });
-                },
-                onApprove: (data, actions) => {
-                    return actions.order.capture().then(details => {
-                        showMessage('¡Gracias por su compra!', 'success');
-                        clearCart();
+                  },
+                  onApprove: (data, actions) => {
+                    return actions.order.capture().then(() => {
+                      clearCart();                         // vacía carrito (la función que ya definiste)
+                      showMessage('¡Gracias por su compra!', 'success');
                     });
-                },
-                onCancel: () => {
-                    showMessage('Pago cancelado.', 'error');
-                },
-                onError: err => {
+                  },
+                  onCancel: () => showMessage('Pago cancelado.', 'error'),
+                  onError: err => {
                     console.error(err);
-                    showMessage('Hubo un error al procesar el pago.', 'error');
-                }
-            }).render('#paypal-button-container');
+                    showMessage('Error al procesar el pago.', 'error');
+                  }
+                }).render('#paypal-button-container');    // SDK: render en contenedor :contentReference[oaicite:5]{index=5}
+          
+                paypalRendered = true;
+              }
+            });
         }
     }
     
