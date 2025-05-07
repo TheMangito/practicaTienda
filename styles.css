@@ -1214,5 +1214,17 @@ footer {
     .cart-actions .btn {
         width: 100%;
     }
+
+    /* Mensaje de éxito tras pago */
+    .success {
+        color: green;
+        font-weight: bold;
+    }
+  
+    /* Mensaje de error/cancelación */
+    .error {
+        color: red;
+        font-weight: bold;
+    }
 }
 }
