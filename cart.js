@@ -222,6 +222,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Inicializar contador del carrito
     updateCartCount();
     
+    //Limpiar carrito
+    function clearCart() {
+        cart = [];
+        localStorage.setItem('luxeCart', JSON.stringify(cart));
+        updateCartCount();
+        renderCartItems();
+        updateCartTotals();
+        showNotification('Carrito vaciado');
+    }
+
     // Si estamos en la página del carrito, renderizar los items
     if (window.location.pathname.includes('cart.html')) {
         renderCartItems();
@@ -232,12 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (clearCartBtn) {
             clearCartBtn.addEventListener('click', () => {
                 if (confirm('¿Estás seguro de que deseas vaciar el carrito?')) {
-                    cart = [];
-                    localStorage.setItem('luxeCart', JSON.stringify(cart));
-                    updateCartCount();
-                    renderCartItems();
-                    updateCartTotals();
-                    showNotification('Carrito vaciado');
+                    clearCart();
                 }
             });
 
@@ -253,6 +258,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 onApprove: (data, actions) => {
                     return actions.order.capture().then(details => {
                         showMessage('¡Gracias por su compra!', 'success');
+                        clearCart();
                     });
                 },
                 onCancel: () => {

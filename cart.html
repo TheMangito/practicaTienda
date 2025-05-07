@@ -92,7 +92,15 @@
                         <span>Total</span>
                         <span id="cart-total">$0.00</span>
                     </div>
-                    <button class="btn btn-primary checkout-btn">Finalizar Compra</button>
+                    <!-- Contenedor del botón de PayPal -->
+                    <div id="paypal-button-container"></div>
+
+                    <!-- Contenedor para mostrar mensajes al usuario -->
+                    <div id="message"></div>
+
+                    <!-- Notificación -->
+                    <div class="notification" id="notification"></div>  
+                    
                     <div class="payment-options">
                         <p>Aceptamos:</p>
                         <div class="payment-icons">
@@ -107,14 +115,7 @@
         </div>
     </section>
 
-    <!-- Contenedor del botón de PayPal -->
-    <div id="paypal-button-container"></div>
-
-    <!-- Contenedor para mostrar mensajes al usuario -->
-    <div id="message"></div>
-
-    <!-- Notificación -->
-    <div class="notification" id="notification"></div>
+    
 
     <!-- Footer -->
     <footer>
